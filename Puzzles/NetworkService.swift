@@ -13,13 +13,15 @@ import UIKit
 class NetworkService {
 	
 	let session: URLSession
-	
 	private var queue = DispatchQueue(label: "com.sber.puzzless", qos: .default, attributes: .concurrent)
 
 	
 	init() {
 		session = URLSession(configuration: .default)
 	}
+    
+    var results = [UIImage]()
+    var keyURL = URL(string: "https://sberschool-c264c.firebaseio.com/enigma.json?avvrdd_token=AIzaSyDqbtGbRFETl2NjHgdxeOGj6UyS3bDiO-Y")!
 	
 	
 	// MARK:- Первое задание
@@ -37,18 +39,17 @@ class NetworkService {
 		let fourthURL = URL(string: "https://i.imgur.com/DgijrVE.jpg")!
 		let urls = [firstURL, secondURL, thirdURL, fourthURL]
         
-		// в этот массив запишите итоговые картинки
-			var results = [UIImage]()
+			
 		
 		let groupUrl = DispatchGroup()
         groupUrl.enter()
         for url in urls {
             let image = UIImage(data:  try! Data(contentsOf: url))!
-            results.append(image)
+            self.results.append(image)
         }
         groupUrl.leave()
         let block = DispatchWorkItem {
-            if let merged = ImagesServices.image(byCombining: results) {
+            if let merged = ImagesServices.image(byCombining: self.results) {
                 completion(.success(merged))
             }
         }
@@ -58,15 +59,13 @@ class NetworkService {
 	
 	// MARK:- Второе задание
 	
-	
 	///  Здесь задание такое:
 	///  У вас есть ключ keyURL, по которому спрятан клад.
 	///  Верните картинку с этим кладом в completion
     public func loadQuiz(completion: @escaping(Result<UIImage, Error>) -> ()) {
-        let keyURL = URL(string: "https://sberschool-c264c.firebaseio.com/enigma.json?avvrdd_token=AIzaSyDqbtGbRFETl2NjHgdxeOGj6UyS3bDiO-Y")!
+        
         let request = URLRequest(url: keyURL)
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
+        
         session.dataTask(with: request) { (data, responce, error) in
             guard let data = data else { completion(.failure(error!)); return }
             do {
