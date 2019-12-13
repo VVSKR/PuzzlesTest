@@ -51,10 +51,10 @@ class PuzzlesMockTests: XCTestCase {
             switch result {
             case .success(let data):
                 resultData = data
-            case .failure(let _): break
-                
+            case .failure(_): break
             }
         }
+        
         XCTAssertEqual(data, resultData)
         
     }
