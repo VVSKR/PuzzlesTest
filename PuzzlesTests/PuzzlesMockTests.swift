@@ -21,23 +21,30 @@ class NetworkSessionMock: NetworkServiceProtocol {
 
 class PuzzlesMockTests: XCTestCase {
     
+    var session: NetworkSessionMock!
+    var networkManager: NetworkService!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        session = NetworkSessionMock()
+        networkManager = NetworkService(session: session)
+        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        networkManager = nil
+        session = nil
+        
     }
     
-
+    
     
     
     func testSuccessResponce() {
-        let session = NetworkSessionMock()
-        let networkManager = NetworkService(session: session)
+        
+        
         let data = "data"
-        session.data = data
         let url = URL(string: "url")!
+        session.data = data
         
         var resultData: String?
         networkManager.loadQuiz(url: url) { (result) in
@@ -45,17 +52,17 @@ class PuzzlesMockTests: XCTestCase {
             case .success(let data):
                 resultData = data
             case .failure(let _): break
-               
+                
             }
         }
         XCTAssertEqual(data, resultData)
         
     }
-       
-        
-
-    }
     
+    
+    
+}
+
 
 
 
