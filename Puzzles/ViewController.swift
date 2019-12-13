@@ -16,6 +16,9 @@ class ViewController: UIViewController {
 	var quizButton = UIButton(type: .system)
 	
 	let networkService: NetworkService
+    
+    var keyURL = URL(string: "https://sberschool-c264c.firebaseio.com/enigma.json?avvrdd_token=AIzaSyDqbtGbRFETl2NjHgdxeOGj6UyS3bDiO-Y")!
+       
 	
 	init(networkService: NetworkService) {
 		self.networkService = networkService
@@ -67,16 +70,20 @@ class ViewController: UIViewController {
 	
 	@objc
 	func quiz() {
-        networkService.loadQuiz { [weak self] (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let image):
-                    self?.imageView.image = image
-                case .failure(let error):
-                    print(error.localizedDescription)
+        networkService.loadQuiz(url: keyURL) { (result) in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let url = URL(string: data)!
+                    let image = UIImage(data: try! Data(contentsOf: url))!
+                    self.imageView.image = image
                 }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
+        
     }
 	
 	func createConstraints() {

@@ -13,7 +13,7 @@
 		8E86C407238332DF001B0377 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E86C405238332DF001B0377 /* LaunchScreen.storyboard */; };
 		8E86C40F23833544001B0377 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E86C40E23833544001B0377 /* NetworkService.swift */; };
 		8E86C4112383DF8A001B0377 /* ImagesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E86C4102383DF8A001B0377 /* ImagesServices.swift */; };
-		F1AFE4D62398434100175C66 /* PuzzlesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AFE4D52398434100175C66 /* PuzzlesTests.swift */; };
+		F135A50123A165180054BCC1 /* PuzzlesMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135A50023A165180054BCC1 /* PuzzlesMockTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +35,8 @@
 		8E86C408238332DF001B0377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E86C40E23833544001B0377 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8E86C4102383DF8A001B0377 /* ImagesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesServices.swift; sourceTree = "<group>"; };
+		F135A50023A165180054BCC1 /* PuzzlesMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlesMockTests.swift; sourceTree = "<group>"; };
 		F1AFE4D32398434100175C66 /* PuzzlesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuzzlesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1AFE4D52398434100175C66 /* PuzzlesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlesTests.swift; sourceTree = "<group>"; };
 		F1AFE4D72398434100175C66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,7 @@
 		F1AFE4D42398434100175C66 /* PuzzlesTests */ = {
 			isa = PBXGroup;
 			children = (
-				F1AFE4D52398434100175C66 /* PuzzlesTests.swift */,
+				F135A50023A165180054BCC1 /* PuzzlesMockTests.swift */,
 				F1AFE4D72398434100175C66 /* Info.plist */,
 			);
 			path = PuzzlesTests;
@@ -210,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1AFE4D62398434100175C66 /* PuzzlesTests.swift in Sources */,
+				F135A50123A165180054BCC1 /* PuzzlesMockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
